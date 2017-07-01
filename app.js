@@ -16,13 +16,30 @@ var connector = new builder.ChatConnector({
 // Listen for messages from users
 server.post('/api/messages', connector.listen());
 
+function s(msg){
+  currentSession.send(msg);
+}
+
+function monitor(trigger, response){
+  if(String(currentSession.message.text).toLowerCase().search(trigger) != -1){
+    s(response)
+    isSent = 0
+  }
+
+}
+
+var currentSession = null
+var isSent = null
+
 // Receive messages from the user and respond by echoing each message back (prefixed with 'You said:')
 var bot = new builder.UniversalBot(connector, function (session) {
-  session.sendTyping();
-    setTimeout(function () {
-        session.send("Hello there...");
-    }, 1000);
+  currentSession = session
+  isSent = 1
+  monitor("theo","toto")
+  monitor("kick","Justice rains from above")
+  monitor("oppression", "Theo est le meilleur des dictateurs")
+  if(isSent == 1){
+    // s("You said "+ session.message.text)
+  }
 
-
-    session.send("You said: %s", session.message.text);
 });
