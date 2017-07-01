@@ -47,12 +47,12 @@ var bot = new builder.UniversalBot(connector, function (session) {
 bot.on('conversationUpdate', function (update) {
     if (update.membersAdded != null) {
       for (var newMember in update.membersAdded) {
-        s("Bonjour "+ newMember.name + " !")
+        s("Bonjour "+ newMember.name + " !");
       }
-      if (update.membersRemoved != null) {
-        for (var newMember in update.membersRemoved) {
-          s("Byebye "+ newMember.name + " ! À la prochaine !")
-        }
-
+    }
+    if (update.membersRemoved != null) {
+      for (var newMember in update.membersRemoved) {
+        s("Byebye "+ newMember.name + " ! À la prochaine !");
+      }
     }
 });
