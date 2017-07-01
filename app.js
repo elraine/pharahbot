@@ -31,17 +31,28 @@ function monitor(trigger, response){
 var currentSession = null;
 var isSent = null;
 
-// Receive messages from the user and respond by echoing each message back (prefixed with 'You said:')
 var bot = new builder.UniversalBot(connector, function (session) {
   currentSession = session;
   isSent = 1;
   monitor("theo","toto");
   monitor("kick","Justice rains from above");
-  monitor("oppression", "Theo est le meilleur des dictateurs");
+  monitor("oppression", "Theo est un dictateur");
   monitor("ping","pong");
   monitor("le pire", "@160320918 (Vincent)");
   if(isSent == 1){
     // s("You said "+ session.message.text)
   }
+});
 
+bot.on('conversationUpdate', function (update) {
+    if (update.membersAdded != null) {
+      for (var newMember in update.membersAdded) {
+        s("Bonjour "+ newMember.name + " !")
+      }
+      if (update.membersRemoved != null) {
+        for (var newMember in update.membersRemoved) {
+          s("Byebye "+ newMember.name + " ! À la prochaine !")
+        }
+
+    }
 });
