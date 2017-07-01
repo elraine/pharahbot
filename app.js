@@ -38,6 +38,7 @@ var bot = new builder.UniversalBot(connector, function (session) {
   monitor("theo","toto")
   monitor("kick","Justice rains from above")
   monitor("oppression", "Theo est le meilleur des dictateurs")
+  monitor("ping","pong")
   if(isSent == 1){
     // s("You said "+ session.message.text)
   }
