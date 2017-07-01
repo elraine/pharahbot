@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/elraine/pharahbot#readme",
   "dependencies": {
+    "botbuilder": "^3.8.4",
     "express": "^4.15.3",
+    "restify": "^5.0.0",
     "telegram-node-bot": "^4.0.5"
   }
 }
