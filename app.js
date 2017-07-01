@@ -22,23 +22,24 @@ function s(msg){
 
 function monitor(trigger, response){
   if(String(currentSession.message.text).toLowerCase().search(trigger) != -1){
-    s(response)
-    isSent = 0
+    s(response);
+    isSent = 0;
   }
 
 }
 
-var currentSession = null
-var isSent = null
+var currentSession = null;
+var isSent = null;
 
 // Receive messages from the user and respond by echoing each message back (prefixed with 'You said:')
 var bot = new builder.UniversalBot(connector, function (session) {
-  currentSession = session
-  isSent = 1
-  monitor("theo","toto")
-  monitor("kick","Justice rains from above")
-  monitor("oppression", "Theo est le meilleur des dictateurs")
-  monitor("ping","pong")
+  currentSession = session;
+  isSent = 1;
+  monitor("theo","toto");
+  monitor("kick","Justice rains from above");
+  monitor("oppression", "Theo est le meilleur des dictateurs");
+  monitor("ping","pong");
+  monitor("le pire", "@160320918 (Vincent)");
   if(isSent == 1){
     // s("You said "+ session.message.text)
   }
