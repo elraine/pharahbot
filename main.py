@@ -7,7 +7,6 @@ import os
 # others
 import datetime
 
-
 updater = Updater(token= os.environ.get('TG_BOT_TOKEN'))
 dispatcher = updater.dispatcher
 
@@ -33,3 +32,8 @@ start_handler = CommandHandler('start', start)
 dispatcher.add_handler(start_handler)
 time_handler = CommandHandler('time', time)
 dispatcher.add_handler(time_handler)
+
+if __name__ == '__main__':
+    app = bottle.Bottle()
+    srv = SSLWSGIRefServer(host="pharahbot.azurewebsites.net", port=80)
+    bottle.run(server=srv)
