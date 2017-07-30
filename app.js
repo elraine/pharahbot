@@ -25,7 +25,39 @@ function monitor(trigger, response){
     s(response);
     isSent = 0;
   }
+}
 
+function returnTime(){
+  var d = new Date()
+  let peopleRepo = new Map()
+  peopleRepo.set("Chicago",-5);
+  peopleRepo.set("Paris",+2);
+  peopleRepo.set("Ho Chi Minh Ville",+7);
+
+
+  utcHour = d.getUTCHours()
+  utcMin = d.getUTCMinutes()
+
+
+  var res = "Today, " + d.getDate().toString() + "/" + (d.getMonth()+1).toString() + "\n\n\n\n"
+
+  for (var [key, value] of peopleRepo) {
+    dayOffset = ""
+    hours = utcHour + value
+
+    if(hours < 0 ){
+      hours += 24
+      dayOffset = " (J-1) "
+    }else if (hours > 24){
+      hours -= 24
+      dayOffset = " (J+1) "
+    }else{
+      // s("Today, " + d.getDate().toString() + "/" + (d.getMonth()+1).toString())
+    }
+    minutes = utcMin
+    res += String(key + " time is "+ dayOffset + ("0" + hours.toString()).slice(-2) + "h" + ("0" + minutes.toString()).slice(-2) + "\n\n \n\n")
+  }
+  s(res)
 }
 
 var currentSession = null;
@@ -34,11 +66,9 @@ var isSent = null;
 var bot = new builder.UniversalBot(connector, function (session) {
   currentSession = session;
   isSent = 1;
-  monitor("theo","toto");
-  monitor("kick","Justice rains from above");
-  monitor("oppression", "Theo est un dictateur");
-  monitor("ping","pong");
-  monitor("le pire", "@160320918 (Vincent)");
+  monitor("bonjour","toto");
+  monitor("/time",returnTime())
+
   if(isSent == 1){
     // s("You said "+ session.message.text)
   }
@@ -55,4 +85,4 @@ bot.on('conversationUpdate', function (update) {
         s("Byebye "+ newMember.name + " ! À la prochaine !");
       }
     }
-});
+}) ;
