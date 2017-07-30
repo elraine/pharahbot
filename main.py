@@ -7,7 +7,7 @@ import logging
 import datetime
 
 
-updater = Updater(token='409201249:AAGvf1_5cUp2xwhv-UnGyrd0rG05Ct1s2As')
+updater = Updater(token=)
 dispatcher = updater.dispatcher
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',level=logging.INFO)
