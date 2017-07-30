@@ -3,11 +3,12 @@ from telegram.ext import Updater
 from telegram.ext import MessageHandler, Filters
 from telegram.ext import CommandHandler
 import logging
+import os
 # others
 import datetime
 
 
-updater = Updater(token=)
+updater = Updater(token= os.environ.get('TG_BOT_TOKEN'))
 dispatcher = updater.dispatcher
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',level=logging.INFO)
