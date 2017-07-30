@@ -1,2 +1,3 @@
 # pharahbot
-nodejs telegram bot 
+python telegram bot 
+
