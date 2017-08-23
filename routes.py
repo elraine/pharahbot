@@ -4,11 +4,13 @@ import telegram
 
 TOKEN = os.environ.get('TG_BOT_TOKEN')
 APPNAME = os.environ.get('APPNAME')
+
 @route('/setWebhook')
 def setWebhook():
     bot = telegram.Bot(TOKEN)
     botWebhookResult = bot.setWebhook(webhook_url='https://{}.azurewebsites.net/botHook'.format(APPNAME))
     return str(botWebhookResult)
+
 @route('/botHook', method='POST')
 def botHook():
     bot = telegram.Bot(TOKEN)
